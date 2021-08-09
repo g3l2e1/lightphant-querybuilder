@@ -67,5 +67,15 @@ class LPQueryBuilderTest {
 			]);
 		print SqlFormatter::format($query->sql());
 	}
+
+	public function delete() {
+		$query = QB::table('GbUsuario')
+			->where(
+				'GbUsuario.Ativo = 1',
+				"GbUsuario.Nome like '%ala%'"
+			)
+			->delete();
+		print SqlFormatter::format($query->sql());
+	}
 }
 
