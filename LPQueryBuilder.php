@@ -109,6 +109,13 @@ class LPQueryBuilder {
 		return new self;
 	}	
 
+	public static function insert($arrProperties) {
+		self::$insert = 'INSERT INTO ' . self::$table . '(';
+		self::$insert .= implode(', ', array_keys($arrProperties)) . ") VALUES ('";
+		self::$insert .= implode("', '", array_values($arrProperties)) . "')";
+		return new self;
+	}
+
 	public static function sql() {
 		if(self::$selectColumns){ self::makeSelect(); return self::$select; }
 		else if(self::$insert){ return self::$insert; }
