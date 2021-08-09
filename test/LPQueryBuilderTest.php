@@ -1,7 +1,7 @@
 <?php
 
 require_once('..\LPQueryBuilder.php');
-require_once('..\SqlFormatter.php');
+require_once('SqlFormatter.php');
 class_alias('LPQueryBuilder', 'QB');
 
 class LPQueryBuilderTest {
