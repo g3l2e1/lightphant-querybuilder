@@ -116,6 +116,15 @@ class LPQueryBuilder {
 		return new self;
 	}
 
+	public static function update($arrProperties) {
+		self::$update = 'UPDATE ' . self::$table . ' SET  ';
+		foreach ($arrProperties as $key => $value) {
+			self::$update .= $key . " = '" . $value . "',";
+		}
+		self::$update .= str_replace(['1=1 AND'], [''], self::$where);
+		return new self;
+	}
+
 	public static function sql() {
 		if(self::$selectColumns){ self::makeSelect(); return self::$select; }
 		else if(self::$insert){ return self::$insert; }
