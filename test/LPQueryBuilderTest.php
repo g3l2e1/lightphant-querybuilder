@@ -52,5 +52,20 @@ class LPQueryBuilderTest {
 			]);
 		print SqlFormatter::format($query->sql());
 	}
+
+	public function update() {
+		$query = QB::table('GbUsuario')
+			->where(
+				'GbUsuario.Ativo = 1',
+				"GbUsuario.Nome like '%ala%'"
+			)
+			->update([
+				'GbUsuario.Nome'=>'Fulano de Tal',
+				'GbUsuario.Ativo'=> 1,
+				'GbUsuario.CriadoPor'=>1,
+				'GbUsuario.CriadoEm'=>date('Y-m-d H:i:s')
+			]);
+		print SqlFormatter::format($query->sql());
+	}
 }
 
