@@ -125,6 +125,12 @@ class LPQueryBuilder {
 		return new self;
 	}
 
+	public static function delete() {
+		self::$delete = 'DELETE FROM ' . self::$table . ' ';
+		self::$delete .= str_replace(['1=1 AND'], [''], self::$where);
+		return new self;
+	}
+
 	public static function sql() {
 		if(self::$selectColumns){ self::makeSelect(); return self::$select; }
 		else if(self::$insert){ return self::$insert; }
